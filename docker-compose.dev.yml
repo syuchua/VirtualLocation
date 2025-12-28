@@ -1,0 +1,33 @@
+services:
+  app:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    command: sleep infinity
+    volumes:
+      - .:/app
+      - gradle-cache:/home/node/.gradle
+      - metro-cache:/home/node/.cache
+      - android-avd:/home/node/.android
+    environment:
+      ANDROID_SDK_ROOT: /opt/android-sdk
+      ANDROID_HOME: /opt/android-sdk
+      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+
+    ports:
+      - '8081:8081'
+      - '9090:9090'
+      - '5554:5554'
+      - '5037:5037'
+      - '5555:5555'
+    devices:
+      - /dev/kvm:/dev/kvm
+    privileged: true
+
+volumes:
+  gradle-cache:
+  metro-cache:
+  android-avd:

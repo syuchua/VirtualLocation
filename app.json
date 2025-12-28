@@ -13,7 +13,10 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "允许 VirtualLocation 访问定位以便查看当前位置和模拟路线。"
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -21,8 +24,23 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.anonymous.VirtualLocation",
+      "config": {
+        "googleMaps": {
+          "apiKey": ""
+        }
+      }
     },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "允许 VirtualLocation 访问定位信息以实现模拟路线与定位工具。",
+          "isAndroidBackgroundLocationEnabled": false
+        }
+      ]
+    ],
     "web": {
       "favicon": "./assets/favicon.png"
     }
